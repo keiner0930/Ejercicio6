@@ -76,9 +76,19 @@ public class Principal6 extends javax.swing.JFrame {
         jPanel1.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 100, 30));
 
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,6 +104,33 @@ public class Principal6 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+     String mtotal;
+     int npalabras,ncentimetros,ncolores,totalp,totalc,totalcm,valort;
+     
+     npalabras= Integer.parseInt(txtPalabras.getText());
+     ncentimetros= Integer.parseInt(txtCentimetros.getText());
+     ncolores= Integer.parseInt(txtColores.getText());
+     
+     totalp= 20000*npalabras;
+     totalcm= 15000*ncentimetros;
+     totalc= 25000*ncolores;
+     valort=totalp+totalcm+totalc;
+     
+     mtotal= String.valueOf(valort);
+     txtTotal.setText(mtotal);
+            
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+    txtPalabras.setText("");
+    txtCentimetros.setText("");
+    txtColores.setText("");
+    txtTotal.setText("");
+        
+    txtPalabras.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
