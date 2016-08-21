@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sony
@@ -53,18 +55,36 @@ public class Principal6 extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
         jLabel2.setText("Numero de Palabras");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        txtPalabras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPalabrasKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPalabras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 60, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 153));
         jLabel3.setText("Tamaño en Centimetros");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+
+        txtCentimetros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCentimetrosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtCentimetros, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 60, 30));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 153));
         jLabel4.setText("Numero de Colores");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+
+        txtColores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtColoresKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtColores, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 60, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
@@ -109,6 +129,26 @@ public class Principal6 extends javax.swing.JFrame {
      String mtotal;
      int npalabras,ncentimetros,ncolores,totalp,totalc,totalcm,valort;
      
+     if(txtPalabras.getText().isEmpty()){
+     getToolkit().beep();
+     JOptionPane.showMessageDialog(this, "Digite El Numero de Palabras","Error",JOptionPane.ERROR_MESSAGE);
+     txtPalabras.requestFocusInWindow();
+     }
+     
+     else if (txtCentimetros.getText().trim().isEmpty()){
+     getToolkit().beep();    
+     JOptionPane.showMessageDialog(this, "Digite El Tamaño en Centimetros","Error",JOptionPane.ERROR_MESSAGE);
+     txtCentimetros.requestFocusInWindow();
+     }
+    
+     else if (txtColores.getText().trim().isEmpty()){
+     getToolkit().beep();    
+     JOptionPane.showMessageDialog(this, "Digite el numero de Colores","Error",JOptionPane.ERROR_MESSAGE);
+     txtColores.requestFocusInWindow();
+    }
+     
+     else{
+                    
      npalabras= Integer.parseInt(txtPalabras.getText());
      ncentimetros= Integer.parseInt(txtCentimetros.getText());
      ncolores= Integer.parseInt(txtColores.getText());
@@ -120,7 +160,8 @@ public class Principal6 extends javax.swing.JFrame {
      
      mtotal= String.valueOf(valort);
      txtTotal.setText(mtotal);
-            
+     
+     }        
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
@@ -131,6 +172,30 @@ public class Principal6 extends javax.swing.JFrame {
         
     txtPalabras.requestFocusInWindow();
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtPalabrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPalabrasKeyTyped
+        char c=evt.getKeyChar(); 
+     if(!Character.isDigit(c)) { 
+              getToolkit().beep();  
+              evt.consume();
+          }   
+    }//GEN-LAST:event_txtPalabrasKeyTyped
+
+    private void txtCentimetrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCentimetrosKeyTyped
+      char c=evt.getKeyChar(); 
+     if(!Character.isDigit(c)) { 
+              getToolkit().beep();  
+              evt.consume();
+          } 
+    }//GEN-LAST:event_txtCentimetrosKeyTyped
+
+    private void txtColoresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtColoresKeyTyped
+        char c=evt.getKeyChar(); 
+     if(!Character.isDigit(c)) { 
+              getToolkit().beep();  
+              evt.consume();
+          } 
+    }//GEN-LAST:event_txtColoresKeyTyped
 
     /**
      * @param args the command line arguments
